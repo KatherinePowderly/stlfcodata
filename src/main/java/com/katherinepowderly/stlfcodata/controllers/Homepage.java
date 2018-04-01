@@ -1,31 +1,29 @@
 package com.katherinepowderly.stlfcodata.controllers;
 
 import com.katherinepowderly.stlfcodata.models.csb;
+import com.katherinepowderly.stlfcodata.models.csbData;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-
 import java.util.ArrayList;
 
 @Controller
 public class Homepage {
 
-static ArrayList<csb> csbs = new ArrayList<>();
-
     @RequestMapping(value = "")
     public String index(Model model) {
-        model.addAttribute("csbs", csbs);
+        model.addAttribute("csbs", csbData.getAll());
         model.addAttribute("title", "STLFCO Data Log");
-        return "stlfcodatalog/index"; //file name -- remove .html
+        return "stlfcodatalog/csbfunctionality/index"; //file name -- remove .html
     }
 
     @RequestMapping(value = "addnew", method = RequestMethod.GET)
     public String addnew(Model model) {
         model.addAttribute("title", "Add New CSB");
-        return "stlfcodatalog/addnew";
+        return "stlfcodatalog/csbfunctionality/addnew";
     }
 
     @RequestMapping(value = "addnew", method = RequestMethod.POST)
@@ -36,18 +34,28 @@ static ArrayList<csb> csbs = new ArrayList<>();
 
         csb newcsb = new csb(date, address, intersectionOne, intersectionTwo, city, state, zip, catsReported, ward, complaintantName, complaintantAddress, complaintantPhone);
 
-        csbs.add(newcsb);
+        csbData.add(newcsb);
 
         return "redirect:";
     }
 
-
-
-    @RequestMapping(value = "csb")
-    public String csb(Model model) {
-        model.addAttribute("title", "Individual CSB List");
-        return "stlfcodatalog/csb";
+    @RequestMapping(value = "remove", method = RequestMethod.GET)
+    public String displayRemoveCSB(Model model) {
+        model.addAttribute("csbs", csbData.getAll());
+        model.addAttribute("title", "Remove CSB");
+        return "stlfcodatalog/csbfunctionality/remove";
     }
+
+    @RequestMapping(value = "remove", method = RequestMethod.POST)
+    public String processRemoveCSB(@RequestParam int[] csbIds) {
+
+        for (int csbId : csbIds) {
+            csbData.remove(csbId);
+        }
+
+        return "redirect:";
+    }
+
 
     @RequestMapping(value = "search")
     public String search(Model model) {

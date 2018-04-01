@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://thymeleaf.org/" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8" />
+    <title th:text="${title}">Title</title>
+</head>
+<body class="container body-content">
+<h1 th:text="${title}">Default Title</h1>
+
+<nav th:replace="fragments :: navigation"></nav>
+
+<form method="post">
+
+    <div th:each="csb : ${csbs}" class="checkbox">
+        <input type="checkbox" name="csbIds" th:value="${csb.csbId}" th:id="${csb.csbId}"/>
+        <label th:for="${csb.csbId}" th:text="${csb.date}"></label>
+        <br />
+    </div>
+
+    <input type="submit" value="Remove CSB" />
+</form>
+
+</body>
+</html>
+

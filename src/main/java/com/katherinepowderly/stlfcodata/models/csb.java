@@ -2,6 +2,11 @@ package com.katherinepowderly.stlfcodata.models;
 
 public class csb {
 
+    private static int nextId = 1;
+
+
+    private int csbId;
+
     private String date;
     private String address;
     private String intersectionOne;
@@ -16,6 +21,7 @@ public class csb {
     private String complaintantPhone;
 
     public csb(String date, String address, String intersectionOne, String intersectionTwo, String city, String state, String zip, String catsReported, String ward, String complaintantName, String complaintantAddress, String complaintantPhone) {
+        this();
         this.date = date;
         this.address = address;
         this.intersectionOne = intersectionOne;
@@ -29,7 +35,18 @@ public class csb {
         this.complaintantAddress = complaintantAddress;
         this.complaintantPhone = complaintantPhone; }
 
+    public csb() {
+        csbId = nextId;
+        nextId++;
+    }
 
+        public int getCsbId() {
+        return csbId;
+        }
+
+        public void setCsbId(int csbId) {
+            this.csbId = csbId;
+        }
 
         public String getDate() {
             return date;
