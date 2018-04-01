@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html lang="en" xmlns:th="http://thymeleaf.org/">
+<html lang="en" xmlns="http://thymeleaf.org/" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8" />
     <title th:text="${title}">Title</title>
@@ -11,82 +11,75 @@
 <nav th:replace="fragments :: navigation"></nav>
 
 
+
 <form method="post" style="max-width:600px;" >
     <div class="form-group">
         <label for="date-field">Date</label>
-        <input class="form-control" id="date-field" type="text" name="dateField" />
+        <input class="form-control" id="date-field" type="text" name="date" />
     </div>
-</form>
 
-<form method="post" style="max-width:600px;">
     <div class="form-group">
         <label for="address-field">Address</label>
-        <input class="form-control" id="address-field" type="text" name="addressField" />
+        <input class="form-control" id="address-field" type="text" name="address" />
     </div>
-</form>
 
-<form method="post" style="max-width:600px;">
     <div class="form-group">
         <label for="intersection-field-one">Intersection #1</label>
-        <input class="form-control" id="intersection-field-one" type="text" name="intersectionFieldOne" />
+        <input class="form-control" id="intersection-field-one" type="text" name="intersectionOne" />
     </div>
-</form>
 
-<form method="post" style="max-width:600px;">
     <div class="form-group">
         <label for="intersection-field-two">Intersection #2</label>
-        <input class="form-control" id="intersection-field-two" type="text" name="intersectionFieldTwo" />
+        <input class="form-control" id="intersection-field-two" type="text" name="intersectionTwo" />
     </div>
-</form>
 
-<form method="post" style="max-width:600px;">
     <div class="form-group">
         <label for="city-field">City</label>
-        <input class="form-control" id="city-field" type="text" name="cityField" />
+        <input class="form-control" id="city-field" type="text" name="city" />
     </div>
-</form>
 
-<form method="post" style="max-width:600px;">
+    <div class="form-group">
+        <label for="state-field">State</label>
+        <input class="form-control" id="state-field" type="text" name="state" />
+    </div>
+
     <div class="form-group">
         <label for="zip-field">Zip Code</label>
-        <input class="form-control" id="zip-field" type="text" name="zipField" />
+        <input class="form-control" id="zip-field" type="text" name="zip" />
     </div>
-</form>
 
-<form method="post" style="max-width:600px;">
     <div class="form-group">
         <label for="cats-reported-field"># of Cats Reported</label>
-        <input class="form-control" id="cats-reported-field" type="text" name="catsReportedField" />
+        <input class="form-control" id="cats-reported-field" type="text" name="catsReported" />
     </div>
-</form>
 
-<form method="post" style="max-width:600px;">
     <div class="form-group">
         <label for="ward-field">Ward</label>
-        <input class="form-control" id="ward-field" type="text" name="wardField" />
+        <input class="form-control" id="ward-field" type="text" name="ward" />
     </div>
-</form>
 
-<form method="post" style="max-width:600px;">
     <div class="form-group">
         <label for="complaintant-name-field">Complaintant Name</label>
-        <input class="form-control" id="complaintant-name-field" type="text" name="complaintantNameField" />
+        <input class="form-control" id="complaintant-name-field" type="text" name="complaintantName" />
     </div>
-</form>
 
-<form method="post" style="max-width:600px;">
     <div class="form-group">
         <label for="complaintant-address-field">Complaintant Address</label>
-        <input class="form-control" id="complaintant-address-field" type="text" name="complaintantAddressField" />
-    </div>
-</form>
+        <input class="form-control" id="complaintant-address-field" type="text" name="complaintantAddress" />
 
-<form method="post" style="max-width:600px;">
+    </div>
+
     <div class="form-group">
         <label for="complaintant-phone-field">Complaintant Phone</label>
-        <input class="form-control" id="complaintant-phone-field" type="text" name="complaintantPhoneField" />
+        <input class="form-control" id="complaintant-phone-field" type="text" name="complaintantPhone" />
     </div>
+
+
+
+    <input type="submit" value="Add CSB" />
+
 </form>
+
 
 
 </body>

@@ -8,6 +8,43 @@
 <body>
 <h1 th:text="${title}">Default Title</h1>
 
+<nav th:replace="fragments :: navigation"></nav>
+
+<table class="table">
+
+    <tr>
+        <th>Date</th>
+        <th>Address</th>
+        <th>Intersection One</th>
+        <th>Intersction Two</th>
+        <th>City</th>
+        <th>State</th>
+        <th>Zip</th>
+        <th># of Cats Reported</th>
+        <th>Ward</th>
+        <th>Complaintant Name</th>
+        <th>Complaintant Address</th>
+        <th>Complaintant Phone</th>
+    </tr>
+
+    <tr th:each="csb : ${csbs}">
+        <td th:text="${csb.date}"></td>
+        <td th:text="${csb.address}"></td>
+        <td th:text="${csb.intersectionOne}"></td>
+        <td th:text="${csb.intersectionTwo}"></td>
+        <td th:text="${csb.city}"></td>
+        <td th:text="${csb.state}"></td>
+        <td th:text="${csb.zip}"></td>
+        <td th:text="${csb.catsReported}"></td>
+        <td th:text="${csb.ward}"></td>
+        <td th:text="${csb.complaintantName}"></td>
+        <td th:text="${csb.complaintantAddress}"></td>
+        <td th:text="${csb.complaintantPhone}"></td>
+
+    </tr>
+
+</table>
+
 
 </body>
 </html>

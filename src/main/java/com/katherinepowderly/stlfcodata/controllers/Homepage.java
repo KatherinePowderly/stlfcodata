@@ -1,22 +1,23 @@
 package com.katherinepowderly.stlfcodata.controllers;
 
+import com.katherinepowderly.stlfcodata.models.csb;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.HashMap;
 
+import java.util.ArrayList;
 
 @Controller
 public class Homepage {
 
-    static HashMap<String, String> csbfiles = new HashMap<>();
-
+static ArrayList<csb> csbs = new ArrayList<>();
 
     @RequestMapping(value = "")
     public String index(Model model) {
+        model.addAttribute("csbs", csbs);
         model.addAttribute("title", "STLFCO Data Log");
         return "stlfcodatalog/index"; //file name -- remove .html
     }
@@ -28,33 +29,17 @@ public class Homepage {
     }
 
     @RequestMapping(value = "addnew", method = RequestMethod.POST)
-    public String addnew(@RequestParam String dateField, String addressField, String intersectionFieldOne,
-                         String intersectionFieldTwo, String cityField, String zipField, String catsReportedField,
-                         String wardField, String complaintantNameField, String complaintantAddressField, String complaintantPhoneField,
-                                       @RequestParam String date, String address, String intersectionOne,
-                         String intersectionTwo, String city, String zip, String catsReported, String ward, String complaintantName,
-                         String complaintantAddress, String complaintantPhone) {
+    public String processAddCSBForm(@RequestParam String date, @RequestParam String address, @RequestParam String intersectionOne,
+                                    @RequestParam String intersectionTwo, @RequestParam String city, @RequestParam String state, @RequestParam String zip, @RequestParam String catsReported,
+                                    @RequestParam String ward, @RequestParam String complaintantName, @RequestParam String complaintantAddress, @RequestParam String complaintantPhone){
 
 
-        csbfiles.put(dateField, date);
-        csbfiles.put(addressField, address);
-        csbfiles.put(intersectionFieldOne, intersectionOne);
-        csbfiles.put(intersectionFieldTwo, intersectionTwo);
-        csbfiles.put(cityField, city);
-        csbfiles.put(zipField, zip);
-        csbfiles.put(catsReportedField, catsReported);
-        csbfiles.put(wardField, ward);
-        csbfiles.put(complaintantNameField, complaintantName);
-        csbfiles.put(complaintantAddressField, complaintantAddress);
-        csbfiles.put(complaintantPhoneField, complaintantPhone);
+        csb newcsb = new csb(date, address, intersectionOne, intersectionTwo, city, state, zip, catsReported, ward, complaintantName, complaintantAddress, complaintantPhone);
+
+        csbs.add(newcsb);
 
         return "redirect:";
     }
-
-
-
-
-
 
 
 
@@ -68,12 +53,6 @@ public class Homepage {
     public String search(Model model) {
         model.addAttribute("title", "Search Data");
         return "stlfcodatalog/search";
-    }
-
-    @RequestMapping(value = "register")
-    public String register(Model model) {
-        model.addAttribute("title", "Register");
-        return "stlfcodatalog/registration";
     }
 
     @RequestMapping(value = "usermain")
