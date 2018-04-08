@@ -10,19 +10,16 @@
 
 <nav th:replace="fragments :: navigation"></nav>
 
-
-<form method="post">
+<form method="get">
 
     <div th:each="csb : ${csbs}" class="checkbox">
-        <input type="checkbox" name="csbIds" th:value="${csb.id}" th:id="${csb.id}"/>
-        <label th:for="${csb.id}" th:text="${csb.date}"></label>
+        <input type="checkbox" name="csbIds" th:value="${csb.csbId}" th:id="${csb.csbId}"/>
+        <label th:for="${csb.csbId}" th:text="${csb.date}"></label>
         <br />
     </div>
 
-    <input type="submit" value="Remove CSB" />
+    <input type="submit" value="Edit" />
 </form>
-
 
 </body>
 </html>
-

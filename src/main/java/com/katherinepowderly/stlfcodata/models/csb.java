@@ -1,11 +1,16 @@
 package com.katherinepowderly.stlfcodata.models;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+
+@Entity
 public class csb {
 
-    private static int nextId = 1;
-
-
-    private int csbId;
+    @Id
+    @GeneratedValue
+    private int id;
 
     private String date;
     private String address;
@@ -21,7 +26,6 @@ public class csb {
     private String complaintantPhone;
 
     public csb(String date, String address, String intersectionOne, String intersectionTwo, String city, String state, String zip, String catsReported, String ward, String complaintantName, String complaintantAddress, String complaintantPhone) {
-        this();
         this.date = date;
         this.address = address;
         this.intersectionOne = intersectionOne;
@@ -35,17 +39,10 @@ public class csb {
         this.complaintantAddress = complaintantAddress;
         this.complaintantPhone = complaintantPhone; }
 
-    public csb() {
-        csbId = nextId;
-        nextId++;
-    }
+    public csb() { }
 
-        public int getCsbId() {
-        return csbId;
-        }
-
-        public void setCsbId(int csbId) {
-            this.csbId = csbId;
+        public int getId() {
+            return id;
         }
 
         public String getDate() {
